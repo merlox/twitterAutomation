@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/" />
+
+    <meta charset="utf-8">
+    <title>Twitter automation quotes</title>
+    <script src="bower_components/angular/angular.js" charset="utf-8"></script>
+
+<!--Install these using bower and change routes as you wish-->
+    <script src="js/controllers/Twitter.client.controller.js"></script>
+    <script src="bower_components/angular-xml2json/angular-xml2json.js" charset="utf-8"></script>
+    <script src="bower_components/angular-material/angular-material.js" charset="utf-8"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+
+  </head>
+  <body>
+
+    <md-content ng-app="twitter">
+      <md-toolbar>
+        <h3>Twitter automation</h3>
+      </md-toolbar>
+
+      <md-content ng-controller="TwitterCtrl as twitterCtrl" flex layout-padding layout="row" layout-align="center center">
+      <!--Options-->
+        <md-card flex="60">
+          <h1>Options</h1>
+          <md-input-container>
+            <label>Publish tweet</label>
+            <input ng-model="twitterCtrl.tweet" type="text" name="name" value="" maxlength="140">
+          </md-input-container>
+          <md-button ng-click="twitterCtrl.sendTweet(twitterCtrl.tweet)">
+            Send
+          </md-button>
+          <h3>Tweets already sent</h3>
+          <p ng-repeat="item in twitterCtrl.tweetsSent">
+            {{item}}
+            <md-divider></md-divider>
+          </p>
+          <md-button ng-click="twitterCtrl.getRandomQuote()" class="md-raised">
+            Get quote
+          </md-button>
+        </md-card>
+      </md-content>
+    </md-content>
+
+
+  </body>
+</html>
